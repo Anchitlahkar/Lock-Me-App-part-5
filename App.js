@@ -1,14 +1,31 @@
 import * as React from "react"
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import MainScreen from './Screens/MainScreen';
+import "react-native-gesture-handler"
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./Screens/HomeScreen";
+import MainScreen from "./Screens/MainScreen";
+
+
+const Stack = createStackNavigator()
+
 
 export default function App() {
   return (
-    <MainScreen />
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="HOME" screenOptions={{ headerShown: false }} >
+
+        <Stack.Screen
+          name="HOME"
+          component={HomeScreen}
+        />
+
+        <Stack.Screen
+          name="Main"
+          component={MainScreen}
+        />
+
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-
-});
